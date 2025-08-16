@@ -27,5 +27,7 @@ jobs:
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: |
-          git remote add heroku https://git.heroku.com/borroto-breast-cancer-app.git
+          curl https://cli-assets.heroku.com/install.sh | sh
+          heroku auth:token
+          heroku git:remote -a borroto-breast-cancer-app
           git push heroku main
